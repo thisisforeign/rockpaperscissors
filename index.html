@@ -15,6 +15,10 @@
         }
 
         function playRound(playerSelection, computerSelection){
+            if (playerSelection != playerSelection.toLowerCase()){
+                playerSelection = playerSelection.toLowerCase();
+            }
+
             if (computerChoice == "rock"){
                 (playerSelection == "paper") ? console.log("Player wins"):
                 (playerSelection == "scissors") ? console.log("Player loses"):
