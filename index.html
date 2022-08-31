@@ -6,41 +6,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <script>
-        let computerChoice;
+        let computerSelection;
+        let playerCount = 0;
+        let computerCount = 0;
         const computerOptions = ["rock", "paper", "scissors"];
+        const playerSelection = "rock";
 
         function getComputerChoice(){
             let choiceNum = Math.floor(Math.random() * 3);
-            return computerChoice = computerOptions[choiceNum];
+            return computerSelection = computerOptions[choiceNum];
         }
 
         function playRound(playerSelection, computerSelection){
-            if (playerSelection != playerSelection.toLowerCase()){
+         /*   if (playerSelection != playerSelection.toLowerCase()){
                 playerSelection = playerSelection.toLowerCase();
+            }*/
+            if (computerSelection == "rock"){
+                if (playerSelection == "paper"){
+                    console.log("Player wins");
+                    playerCount++;
+                }
+                else if (playerSelection == "scissors"){
+                    console.log("Player loses");
+                    computerCount++;
+                }
+                else{
+                    console.log("Draw");
+                }
             }
-
-            if (computerChoice == "rock"){
-                (playerSelection == "paper") ? console.log("Player wins"):
-                (playerSelection == "scissors") ? console.log("Player loses"):
-                console.log("Draw");
-            }
-            else if (computerChoice == "paper"){
-                (playerSelection == "scissors") ? console.log("Player wins"):
-                (playerSelection == "rock") ? console.log("Player loses"):
-                console.log("Draw");
+            else if (computerSelection == "paper"){
+                if (playerSelection == "scissors"){
+                    console.log("Player wins");
+                    playerCount++;
+                }
+                else if (playerSelection == "rock"){
+                    console.log("Player loses");
+                    computerCount++;
+                }
+                else{
+                    console.log("Draw");
+                }
             }
             else{
-                (playerSelection == "rock") ? console.log("Player wins"):
-                (playerSelection == "paper") ? console.log("Player loses"):
-                console.log("Draw");
+                if (playerSelection == "rock"){
+                    console.log("Player wins");
+                    playerCount++;
+                }
+                else if (playerSelection == "paper"){
+                    console.log("Player loses");
+                    computerCount++;
+                }
+                else{
+                    console.log("Draw");
+                }
             }
         }
 
-        const playerSelection = "rock";
-        const computerSelection = getComputerChoice();
-        console.log(playerSelection);
-        console.log(computerSelection);
-        console.log(playRound(playerSelection, computerSelection));
+        function game(){
+            for(let i = 0; i < 5; i++){
+                getComputerChoice();
+                console.log(computerSelection);
+                console.log(playerSelection);
+                playRound(playerSelection, computerSelection);
+            }
+            console.log("Game over");
+        }
+        game();
     </script>
 </head>
 <body>
