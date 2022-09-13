@@ -57,71 +57,44 @@
 
             if (computerSelection == "rock"){
                 if (playerSelection == "paper"){
-                    console.log("Player wins");
                     playerWin();
                     round++;
-                    console.log(playerCount);
-                    console.log(computerCount);
                 }
                 else if (playerSelection == "scissors"){
-                    console.log("Player loses");
                     computerWin();
                     round++;
-                    console.log(playerCount);
-                    console.log(computerCount);
                 }
                 else{
                     draw();
                     round++;
-                    console.log("Draw");
-                    console.log(playerCount);
-                    console.log(computerCount);
                 }
             }
             else if (computerSelection == "paper"){
                 if (playerSelection == "scissors"){
-                    console.log("Player wins");
                     playerWin();
                     round++;
-                    console.log(playerCount);
-                    console.log(computerCount);
                 }
                 else if (playerSelection == "rock"){
-                    console.log("Player loses");
                     computerWin();
                     round++;
-                    console.log(playerCount);
-                    console.log(computerCount);
                 }
                 else{
                     draw();
                     round++;
-                    console.log("Draw");
-                    console.log(playerCount);
-                    console.log(computerCount);
                 }
             }
             else{
                 if (playerSelection == "rock"){
-                    console.log("Player wins");
                     playerWin();
                     round++;
-                    console.log(playerCount);
-                    console.log(computerCount);
                 }
                 else if (playerSelection == "paper"){
-                    console.log("Player loses");
                     computerWin();
                     round++;
-                    console.log(playerCount);
-                    console.log(computerCount);
                 }
                 else{
                     draw();
                     round++;
-                    console.log("Draw");
-                    console.log(playerCount);
-                    console.log(computerCount);
                 }
             }
             game();
@@ -129,6 +102,9 @@
 
         function playerWin(){
             playerCount++;
+            console.log("Player wins");
+            console.log(playerCount);
+            console.log(computerCount);
             document.getElementById("whoWinsdiv").innerHTML = "Player wins";
             document.getElementById("scorediv").innerHTML = `Player: ${playerCount} | Computer: ${computerCount}`;
 
@@ -136,11 +112,17 @@
 
         function computerWin(){
             computerCount++; 
+            console.log("Player loses");
+            console.log(playerCount);
+            console.log(computerCount);
             document.getElementById("whoWinsdiv").innerHTML = "Player loses";
             document.getElementById("scorediv").innerHTML = `Player: ${playerCount} | Computer: ${computerCount}`;
         }
 
         function draw(){
+            console.log("Draw");
+            console.log(playerCount);
+            console.log(computerCount);
             document.getElementById("whoWinsdiv").innerHTML = "Draw";
             document.getElementById("scorediv").innerHTML = `Player: ${playerCount} | Computer: ${computerCount}`;
         }
