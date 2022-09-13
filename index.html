@@ -12,6 +12,14 @@
     </style>
 </head>
 <body>
+    <button id="rockbtn">rock</button>
+    <button id="paperbtn">paper</button>
+    <button id="scissorsbtn">scissors</button>
+    <div id="scorediv">Player: 0 | Computer: 0</div>
+    <div id="playerdiv">You chose: </div>
+    <div id="computerdiv">Computer chose: </div>
+    <div id="whoWinsdiv"></div>
+
     <div class="choice" id="rock">
         <img src="pictures/rock.jpg" alt="Picture of a rock">
     </div>
@@ -33,7 +41,7 @@
         const scissors_div = document.getElementById("scissors");
 
         const computerOptions = ["rock", "paper", "scissors"];
-        const playerSelection = "";
+        let playerSelection = "";
 
         function getComputerChoice(){
             let choiceNum = Math.floor(Math.random() * 3);
@@ -42,6 +50,8 @@
 
         function playRound(playerSelection){
             const computerSelection = getComputerChoice();
+            document.getElementById("playerdiv").innerHTML = "You chose " + playerSelection;
+            document.getElementById("computerdiv").innerHTML = "Computer chose " + computerSelection;
             console.log("user " + playerSelection);
             console.log("com " + computerSelection);
 
@@ -61,6 +71,7 @@
                     console.log(computerCount);
                 }
                 else{
+                    draw();
                     round++;
                     console.log("Draw");
                     console.log(playerCount);
@@ -83,6 +94,7 @@
                     console.log(computerCount);
                 }
                 else{
+                    draw();
                     round++;
                     console.log("Draw");
                     console.log(playerCount);
@@ -105,6 +117,7 @@
                     console.log(computerCount);
                 }
                 else{
+                    draw();
                     round++;
                     console.log("Draw");
                     console.log(playerCount);
@@ -116,24 +129,62 @@
 
         function playerWin(){
             playerCount++;
+            document.getElementById("whoWinsdiv").innerHTML = "Player wins";
+            document.getElementById("scorediv").innerHTML = `Player: ${playerCount} | Computer: ${computerCount}`;
+
         }
 
         function computerWin(){
             computerCount++; 
+            document.getElementById("whoWinsdiv").innerHTML = "Player loses";
+            document.getElementById("scorediv").innerHTML = `Player: ${playerCount} | Computer: ${computerCount}`;
+        }
+
+        function draw(){
+            document.getElementById("whoWinsdiv").innerHTML = "Draw";
+            document.getElementById("scorediv").innerHTML = `Player: ${playerCount} | Computer: ${computerCount}`;
         }
 
         function game(){
             if(round == 5){
-                playerCount === computerCount ? console.log("Game over! It is a tie"):
-                playerCount > computerCount ? console.log(`Game over! Player wins! Player: ${playerCount} | Computer: ${computerCount}`):
-                console.log(`Game over! Computer wins! Player: ${playerCount} | Computer: ${computerCount}`);
+                if(playerCount === computerCount){
+                    document.getElementById("scorediv").innerHTML = "Game over! It is a tie";
+                }
+                else if(playerCount > computerCount){
+                    document.getElementById("whoWinsdiv").innerHTML = "Game over! Player wins!";
+                    document.getElementById("scorediv").innerHTML = `Player: ${playerCount} | Computer: ${computerCount}`;
+                }
+                else{
+                    document.getElementById("whoWinsdiv").innerHTML = "Game over! Computer wins!";
+                    document.getElementById("scorediv").innerHTML = `Player: ${playerCount} | Computer: ${computerCount}`;
+                }
                 playerCount = 0;
                 computerCount = 0;
                 round = 0;
             }
         }
+        
 
-        function main(){
+        const rock_btn = document.getElementById("rockbtn");
+        const paper_btn = document.getElementById("paperbtn");
+        const scissors_btn = document.getElementById("scissorsbtn");
+
+        function buttonPress(){
+            rock_btn.addEventListener('click', function(){
+                playerSelection = "rock";
+                playRound(playerSelection);
+            });
+            paper_btn.addEventListener('click', function(){
+                playRound("paper");
+            });
+            scissors_btn.addEventListener('click', function(){
+                playRound("scissors");
+            })
+        }
+
+        buttonPress();
+
+      /*  function main(){
         rock_div.addEventListener('click', function() {
             playRound("rock");
         })
@@ -146,7 +197,7 @@
             playRound("scissors");
         })
         }
-        main();
+        main();*/
     </script>
 </body>
 </html>
